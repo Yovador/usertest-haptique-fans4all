@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +26,7 @@ public class LobbyActivity extends Activity implements View.OnClickListener {
     private ListViewAdapter adapter;
 
     private Button scanButton, drawingButton, tactFileButton, tactotExampleButton, pingallButton;
-
+    MediaPlayer mediaPlayer;
 
     private SdkRequestHandler sdkRequestHandler;
 
@@ -48,6 +49,7 @@ public class LobbyActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
+        mediaPlayer = MediaPlayer.create(this, R.raw.beep);
 
         handler.postDelayed(run, 100);
 
@@ -123,6 +125,7 @@ public class LobbyActivity extends Activity implements View.OnClickListener {
                 }
             }
         } else if (v.getId() == R.id.tact_file_button) {
+            mediaPlayer.start();
             startActivityForResult(new Intent(this, TactFileActivity.class), 1);
         }
     }
