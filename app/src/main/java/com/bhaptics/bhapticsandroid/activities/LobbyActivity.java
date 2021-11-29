@@ -17,8 +17,11 @@ import androidx.core.app.ActivityCompat;
 import com.bhaptics.bhapticsandroid.App;
 import com.bhaptics.bhapticsandroid.R;
 import com.bhaptics.bhapticsandroid.adapters.ListViewAdapter;
+import com.bhaptics.bhapticsandroid.utils.ExperimentData;
 import com.bhaptics.bhapticsmanger.SdkRequestHandler;
 import com.bhaptics.service.SimpleBhapticsDevice;
+
+import java.util.Calendar;
 
 public class LobbyActivity extends Activity implements View.OnClickListener {
     public static final String TAG = LobbyActivity.class.getSimpleName();
@@ -126,6 +129,7 @@ public class LobbyActivity extends Activity implements View.OnClickListener {
             }
         } else if (v.getId() == R.id.tact_file_button) {
             mediaPlayer.start();
+            App.jsonManager.AddExperiment(new ExperimentData(Calendar.getInstance().getTime(), "Init Experiment"));
             startActivityForResult(new Intent(this, TactFileActivity.class), 1);
         }
     }
