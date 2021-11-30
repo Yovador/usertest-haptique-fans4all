@@ -33,14 +33,32 @@
             android:layout_height="wrap_content"
             android:text="@string/ping_all"/>
 
+        <Button
+            android:id="@+id/exportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exportButton" />
+
+        <Button
+            android:id="@+id/purgeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/purge_json" />
+
         <TextView
             android:text="@string/deviceListTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <ListView
             android:id="@+id/deviceListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="64dp" />
+
+        <TextView
+            android:id="@+id/jsonView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

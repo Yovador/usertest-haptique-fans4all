@@ -7,4 +7,6 @@
     <string name="ping_all">Ping All</string>
     <string name="deviceListTitle">bHaptics Device List</string>
     <string name="lobbyTitle">Fans4All Haptic Experiment tool</string>
+    <string name="exportButton">Export experiment</string>
+    <string name="purge_json">Purge JSON</string>
 </resources>
