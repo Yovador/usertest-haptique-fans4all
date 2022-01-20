@@ -53,7 +53,7 @@
         <ListView
             android:id="@+id/deviceListView"
             android:layout_width="match_parent"
-            android:layout_height="64dp" />
+            android:layout_height="135dp" />
 
         <TextView
             android:id="@+id/jsonView"

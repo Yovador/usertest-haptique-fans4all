@@ -11,12 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bhaptics.bhapticsandroid.App;
-import com.bhaptics.bhapticsandroid.activities.LobbyActivity;
 import com.bhaptics.bhapticsandroid.R;
-import com.bhaptics.bhapticsmanger.BhapticsManager;
-import com.bhaptics.bhapticsmanger.BhapticsModule;
+import com.bhaptics.bhapticsandroid.activities.LobbyActivity;
 import com.bhaptics.bhapticsmanger.SdkRequestHandler;
-import com.bhaptics.commons.model.BhapticsDevice;
 import com.bhaptics.service.SimpleBhapticsDevice;
 
 import java.util.List;
