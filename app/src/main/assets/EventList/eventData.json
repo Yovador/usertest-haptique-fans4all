@@ -1,5 +1,18 @@
 {
     "Events": [
+        
+        {
+            "displayName": "Roulage",
+            "logData": "Début de la phase de roulage"
+        },
+        {
+            "displayName": "Décolage",
+            "logData": "Début de la phase de décolage"
+        },
+        {
+            "displayName": "Vol",
+            "logData": "Début de la phase de Vol"
+        },
         {
             "displayName": "Virage à Gauche",
             "logData": "Début du virage à gauche"
@@ -11,6 +24,10 @@
         {
             "displayName": "Décrochage",
             "logData": "Début de la phase de décrochage"
+        },
+        {
+            "displayName": "Atterissage",
+            "logData": "Début de la phase d'atterissage"
         }
     ]
 }
