@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="35dp">
     <TextView
-        android:id="@+id/file_name"
+        android:id="@+id/event_name"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:gravity="center"
@@ -11,10 +11,10 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/play_button"
+        android:id="@+id/event_button"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:minHeight="0dp"
-        android:text="@string/play_button"
+        android:text="@string/event_button"
         android:textSize="10dp" />
 </LinearLayout>

@@ -1,0 +1,16 @@
+{
+    "Events": [
+        {
+            "displayName": "Virage à Gauche",
+            "logData": "Début du virage à gauche"
+        },
+        {
+            "displayName": "Virage à Droite",
+            "logData": "Début du virage à droite"
+        },
+        {
+            "displayName": "Décrochage",
+            "logData": "Début de la phase de décrochage"
+        }
+    ]
+}

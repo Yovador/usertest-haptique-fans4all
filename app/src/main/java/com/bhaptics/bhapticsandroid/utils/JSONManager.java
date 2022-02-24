@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class JSONManager {
@@ -20,7 +21,7 @@ public class JSONManager {
     public void AddExperiment(ExperimentData experimentData){
         boolean canAdd = true;
         for (ExperimentData data:experimentDatas) {
-            Log.d( "Yova" ,  " List : " + data.date + " / " + data.fileName );
+            Log.d( "Yova" ,  " List : " + data.date + " / " + data.eventText);
             if(experimentData.date == data.date){
                 canAdd = false;
             }
@@ -91,8 +92,44 @@ public class JSONManager {
     private JSONObject CreateJsonExperimentData(ExperimentData experimentData) throws JSONException {
         JSONObject result = new JSONObject();
         result.put("Date", experimentData.date.toString());
-        result.put("File Name", experimentData.fileName);
+        result.put("Event text", experimentData.eventText);
         return  result;
+    }
+
+    private String loadJSONFromAsset(Context context, String path) {
+        String jsonString = null;
+        Log.d("Yova", "before try");
+
+        try {
+            InputStream is = context.getAssets().open(path);
+            Log.d("Yova", "is "+ is.toString());
+
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            jsonString = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return jsonString;
+    }
+
+    public ArrayList<EventData> GetEventData(Context context) throws JSONException {
+        ArrayList<EventData> eventData = new ArrayList<>();
+        String jsonString = loadJSONFromAsset(context, "EventList/eventData.json");
+        Log.d("Yova", "Trying to read JSON : " + jsonString);
+        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONArray jsonArray = jsonObject.getJSONArray("Events");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject object = jsonArray.getJSONObject(i);
+            String displayName = object.getString("displayName");
+            String logData = object.getString("logData");
+            EventData newEvent = new EventData(displayName, logData);
+            eventData.add(newEvent);
+        }
+        return eventData;
     }
 
 }

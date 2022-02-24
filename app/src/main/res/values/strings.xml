@@ -2,11 +2,15 @@
     <string name="app_name">Fans4all Haptic Experiment Tool</string>
     <string name="company_name">Fans4all</string>
     <string name="title_activity_vest_demo">VestDemoActivity</string>
-    <string name="start_experiment">Start Experiment</string>
-    <string name="scan">Scan</string>
-    <string name="ping_all">Ping All</string>
-    <string name="deviceListTitle">bHaptics Device List</string>
-    <string name="lobbyTitle">Fans4All Haptic Experiment tool</string>
-    <string name="exportButton">Export experiment</string>
-    <string name="purge_json">Purge JSON</string>
+    <string name="start_experiment">Démarrer l\'experience</string>
+    <string name="scan">Chercher des dispositfs haptiques</string>
+    <string name="ping_all">Faire vibrer tout les dispositifs haptiques connecté</string>
+    <string name="deviceListTitle">Liste des dispositifs haptiques</string>
+    <string name="lobbyTitle">Fans4All outil d\'experience haptique </string>
+    <string name="exportButton">Exporter l\'experience</string>
+    <string name="purge_json">Recommencer l\'experience</string>
+    <string name="play_button">Jouer</string>
+    <string name="event_button">Ajouter l\'evennement</string>
+    <string name="pair_button">Connecter le dispostif</string>
+    <string name="json_content">Console de l\'expérience</string>
 </resources>

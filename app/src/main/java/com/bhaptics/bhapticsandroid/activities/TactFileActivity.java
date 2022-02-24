@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.bhaptics.bhapticsandroid.R;
+import com.bhaptics.bhapticsandroid.adapters.EventListAdapter;
 import com.bhaptics.bhapticsandroid.adapters.TactFileListAdapter;
+
+import org.json.JSONException;
 
 public class TactFileActivity extends Activity implements View.OnClickListener{
     public static final String TAG = TactFileActivity.class.getSimpleName();
@@ -23,14 +26,16 @@ public class TactFileActivity extends Activity implements View.OnClickListener{
         backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(this);
 
-        String tacFileFolder = "tactFiles/tactosy";
-        ListView tactFileListView = findViewById(R.id.tactosy_file_list);
-        tactFileListView.setAdapter(new TactFileListAdapter(this, tacFileFolder));
-
-
         String tactotFileFolder = "tactFiles/tactot";
         ListView tactotFileListView = findViewById(R.id.tactot_file_list);
         tactotFileListView.setAdapter(new TactFileListAdapter(this, tactotFileFolder));
+
+        ListView eventListView = findViewById(R.id.event_list);
+        try {
+            eventListView.setAdapter(new EventListAdapter(this));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

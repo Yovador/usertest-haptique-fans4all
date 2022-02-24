@@ -10,44 +10,42 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.Calendar;
+
 import com.bhaptics.bhapticsandroid.App;
 import com.bhaptics.bhapticsandroid.R;
-import com.bhaptics.bhapticsandroid.activities.TactFileActivity;
 import com.bhaptics.bhapticsandroid.models.TactFile;
+import com.bhaptics.bhapticsandroid.utils.EventData;
 import com.bhaptics.bhapticsandroid.utils.ExperimentData;
 import com.bhaptics.bhapticsandroid.utils.FileUtils;
+import com.bhaptics.bhapticsandroid.utils.JSONManager;
 import com.bhaptics.bhapticsmanger.SdkRequestHandler;
 
+import org.json.JSONException;
+
+import java.util.Calendar;
 import java.util.List;
 
-public class TactFileListAdapter  extends BaseAdapter {
+public class EventListAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layout;
-    private List<TactFile> files;
-    private SdkRequestHandler sdkRequestHandler;
+    private List<EventData> eventData;
 
-    public TactFileListAdapter(Activity context, String tacFileFolder) {
+    public EventListAdapter(Activity context) throws JSONException {
         this.inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.layout = R.layout.list_item_tact_file;
+        this.layout = R.layout.list_event;
+        eventData = App.jsonManager.GetEventData(context);
 
-        files = FileUtils.listFile(context, tacFileFolder);
-        sdkRequestHandler = App.getHandler(context);
-
-        for (TactFile file : files) {
-            sdkRequestHandler.register(file.getFileName(), file.getContent());
-        }
     }
 
     @Override
     public int getCount() {
-        return files.size();
+        return eventData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return files.get(position);
+        return eventData.get(position);
     }
 
     @Override
@@ -57,24 +55,22 @@ public class TactFileListAdapter  extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final TactFile tactFile = files.get(position);
+        final EventData event = eventData.get(position);
 
         if(convertView==null){
             convertView=inflater.inflate(layout,parent,false);
-            Button playButton = convertView.findViewById(R.id.play_button);
-            playButton.setOnClickListener(new View.OnClickListener() {
+            Button eventButton = convertView.findViewById(R.id.event_button);
+            eventButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sdkRequestHandler.submitRegistered(tactFile.getFileName(), tactFile.getFileName(), 1f, 1f, 0, 0);
-                    ExperimentData experimentData = new ExperimentData("File played : " + tactFile.getFileName());
-                    App.jsonManager.AddExperiment(experimentData);
+                    App.jsonManager.AddExperiment(new ExperimentData(event.logData));
                 }
             });
         }
 
 
-        TextView deviceName = convertView.findViewById(R.id.file_name);
-        deviceName.setText(tactFile.getFileName());
+        TextView deviceName = convertView.findViewById(R.id.event_name);
+        deviceName.setText(event.displayName);
         return convertView;
     }
 }

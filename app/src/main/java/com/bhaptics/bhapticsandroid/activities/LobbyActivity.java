@@ -148,7 +148,7 @@ public class LobbyActivity extends Activity implements View.OnClickListener {
         } else if (v.getId() == R.id.tact_file_button) {
             mediaPlayer.start();
             if(App.jsonManager.experimentDatas.size() == 0) {
-                App.jsonManager.AddExperiment(new ExperimentData(Calendar.getInstance().getTime(), "Init Experiment"));
+                App.jsonManager.AddExperiment(new ExperimentData("Init Experiment"));
             }
             startActivityForResult(new Intent(this, TactFileActivity.class), 1);
         }

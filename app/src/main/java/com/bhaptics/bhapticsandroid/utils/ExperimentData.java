@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class ExperimentData {
 
-    public ExperimentData(Date date, String fileName){
-        this.date = date;
-        this.fileName = fileName;
+    public ExperimentData(String eventText){
+        this.date = Calendar.getInstance().getTime();
+        this.eventText = eventText;
     }
 
     Date date;
-    String fileName;
+    String eventText;
 
 }
